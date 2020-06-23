@@ -1,0 +1,67 @@
+ 1  pwd
+    2  cd desktop/
+    3  mkdir introToGit
+    4  cd introToGit/
+    5  ls -la
+    6  clear
+    7  history
+    8  get init
+    9  git init
+   10  ls -la
+   11  cd .git
+   12  ls
+   13  git config --global user.name sipeki
+   14  git config --global user.email sipeki@kindlen.eu
+   15  cd
+   16  cat .gitconfig
+   17  cd Desktop/introToGit/
+   18  git status
+   19  nano test.txt
+   20  git status
+   21  ls
+   22  cat test.txt
+   23  git status
+   24  git add test.txt
+   25  git status
+   26  git commit -m "created text.txt file with text in the file"
+   27  git remote add origin https://github.com/sipeki/introToGit.git
+   28  git push -u origin master
+   29  git pull
+   30  ls
+   31  cat test.txt
+   32  cd ..
+   33  rm -rf introToGit/
+   34  ls
+   35  git clone https://github.com/sipeki/introToGit.git
+   36  ls
+   37  cd introToGit/
+   38  ls
+   39  cat test.txt
+   40  git checkout
+   41  git checkout -b development
+   42  git checkout
+   43  ls
+   44  nano test.txt
+   45  git add .
+   46  git commit -m "another line inserted"
+   47  git push
+   48  git push --set-upstream origin development
+   49  git pull
+   50  git checkout master
+   51  git pull
+   52  checkout development
+   53  git checkout development
+   54  git status
+   55  git log
+   56  git checkout master
+   57  git log
+   58  cd ..
+   59  git clone https://github.com/sipeki/introToGit-1.git
+   60  ls
+   61  cd introToGit-1/
+   62  ls
+   63  cat hello_word.txt
+   64  cat hello_world.txt
+   65  nano hello_world.txt
+   66  git add .
+   67  history
