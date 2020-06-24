@@ -154,3 +154,30 @@ describe person;
 +-----------+--------------+------+-----+---------+-------+
 4 rows in set (0.01 sec)
 mysql> alter table person add person_id  int(11) not null);
+
+### select to show all data
+select * from person;
+
+slect * from city limit 10;
+
+mysql> select name, population from city limit 10;
++----------------+------------+
+| name           | population |
++----------------+------------+
+| Kabul          |    1780000 |
+| Qandahar       |     237500 |
+| Herat          |     186800 |
+| Mazar-e-Sharif |     127800 |
+| Amsterdam      |     731200 |
+| Rotterdam      |     593321 |
+| Haag           |     440900 |
+| Utrecht        |     234323 |
+| Eindhoven      |     201843 |
+| Tilburg        |     193238 |
++----------------+------------+
+10 rows in set (0.02 sec)
+
+
+
+mysql> insert into person (person_id, f_name, l_name, age) values 
+(1, 'simon', 'kindlen', 50);
