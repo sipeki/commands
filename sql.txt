@@ -106,6 +106,9 @@ mysql> describe person
 | age    | int(11)      | NO   |     | NULL    |       |
 +--------+--------------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
+
+# alter
+
 mysql> alter table person add gender varchar(1) not null;
 Query OK, 0 rows affected (0.05 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -142,6 +145,32 @@ Records: 0  Duplicates: 0  Warnings: 0
 mysql> alter table person add primary key(person_id);
 Query OK, 0 rows affected (0.04 sec)
 
+mysql> describe person
+    -> ;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| f_name    | varchar(100) | NO   | MUL | NULL    |       |
+| l_name    | varchar(100) | NO   |     | NULL    |       |
+| age       | int(11)      | NO   |     | NULL    |       |
+| person_id | int(11)      | NO   | PRI | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+mysql> alter table person change person_id person_id int(10) NOT NULL auto_increment;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> describe person
+    -> ;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| f_name    | varchar(100) | NO   | MUL | NULL    |                |
+| l_name    | varchar(100) | NO   |     | NULL    |                |
+| age       | int(11)      | NO   |     | NULL    |                |
+| person_id | int(10)      | NO   | PRI | NULL    | auto_increment |
++-----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+mysql>
 
 describe person;
 +-----------+--------------+------+-----+---------+-------+
@@ -199,7 +228,7 @@ mysql> select * from person;
 +--------+---------+-----+-----------+
 1 row in set (0.01 sec)
 
-
+# CRUD https://portal.qa-community.co.uk/~/aws-specialist/learning/databases/databases--data-manipulation-language
 #update record
 
 mysql> update person set age=120 where person_id
@@ -238,3 +267,72 @@ mysql> select * from person;
 +--------+---------+-----+-----------+
 1 row in set (0.01 sec)
 mysql> delete from person;
+
+
+ # Select statements to read data 
+select productID, productName, price, stockCount, price*stockCount as totalVal
+from product
+order by totalVal desc
+limit 3;
+
+select * from product orser by price desc;
+
+select * from product where stock > 5;
+ describe city
+    -> ;
++-------------+----------+------+-----+---------+----------------+
+| Field       | Type     | Null | Key | Default | Extra          |
++-------------+----------+------+-----+---------+----------------+
+| ID          | int(11)  | NO   | PRI | NULL    | auto_increment |
+| Name        | char(35) | NO   |     |         |                |
+| CountryCode | char(3)  | NO   | MUL |         |                |
+| District    | char(20) | NO   |     |         |                |
+| Population  | int(11)  | NO   |     | 0       |                |
++-------------+----------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+mysql> select * from city where CountryCode='USA';
+Empty set (0.02 sec)
+
+mysql> select f_name, age from person;
++--------+-----+
+| f_name | age |
++--------+-----+
+| isabel |  83 |
+| peter  |  83 |
++--------+-----+
+2 rows in set (0.01 sec)
+
+ select population as pop, name as city from city  where population > 100000;
++----------+---------------------------------+
+| pop      | city                            |
++----------+---------------------------------+
+|  1780000 | Kabul                           |
+|   237500 | Qandahar                        |
+|   186800 | Herat                           |
+|   127800 | Mazar-e-Sharif                  |
+|   731200 | Amsterdam                       |
+|   593321 | Rotterdam                       |
+|   440900 | Haag                            |
+
+
+mysql> select population as pop, name as city, district  from city  where population > 100000 order by population  desc limit 15;
++----------+-------------------+------------------+
+| pop      | city              | district         |
++----------+-------------------+------------------+
+| 10500000 | Mumbai (Bombay)   | Maharashtra      |
+|  9981619 | Seoul             | Seoul            |
+|  9968485 | São Paulo         | São Paulo        |
+|  9696300 | Shanghai          | Shanghai         |
+|  9604900 | Jakarta           | Jakarta Raya     |
+|  9269265 | Karachi           | Sindh            |
+|  8787958 | Istanbul          | Istanbul         |
+|  8591309 | Ciudad de México  | Distrito Federal |
+|  8389200 | Moscow            | Moscow (City)    |
+|  8008278 | New York          | New York         |
+|  7980230 | Tokyo             | Tokyo-to         |
+|  7472000 | Peking            | Peking           |
+|  7285000 | London            | England          |
+|  7206704 | Delhi             | Delhi            |
+|  6789479 | Cairo             | Kairo            |
++----------+-------------------+------------------+
+15 rows in set (0.01 sec)
