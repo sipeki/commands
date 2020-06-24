@@ -177,7 +177,45 @@ mysql> select name, population from city limit 10;
 +----------------+------------+
 10 rows in set (0.02 sec)
 
-
+#### enter values into table
 
 mysql> insert into person (person_id, f_name, l_name, age) values 
 (1, 'simon', 'kindlen', 50);
+
+mysql> select * from person;
++--------+---------+-----+-----------+
+| f_name | l_name  | age | person_id |
++--------+---------+-----+-----------+
+| simon  | kindlen |  50 |         1 |
++--------+---------+-----+-----------+
+1 row in set (0.01 sec)
+
+
+mysql> select * from person;
++--------+---------+-----+-----------+
+| f_name | l_name  | age | person_id |
++--------+---------+-----+-----------+
+| simon  | kindlen |  50 |         1 |
++--------+---------+-----+-----------+
+1 row in set (0.01 sec)
+
+
+#update record
+
+mysql> update person set age=120 where person_id
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+mysql> select * from person;
++--------+---------+-----+-----------+
+| f_name | l_name  | age | person_id |
++--------+---------+-----+-----------+
+| simon  | kindlen | 120 |         1 |
++--------+---------+-----+-----------+
+1 row in set (0.01 sec)
+
+
+#delete a record
+
+delete from person where person_id = 2
+
