@@ -1,4 +1,4 @@
-mysql> show database;
+ create database if not exists mysql> show database;
 ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
 mysql> show databases;
 +--------------------+
@@ -336,3 +336,19 @@ mysql> select population as pop, name as city, district  from city  where popula
 |  6789479 | Cairo             | Kairo            |
 +----------+-------------------+------------------+
 15 rows in set (0.01 sec)
+
+
+#####
+sakila
+
+create database if not exists sakila;
+Query OK, 1 row affected (0.01 sec)
+mysql> use sakila
+Database changed
+mysql> source sakila-schema.sql
+
+use sakila
+Database changed
+mysql> source sakila-schema.sql
+
+
