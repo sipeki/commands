@@ -352,3 +352,112 @@ Database changed
 mysql> source sakila-schema.sql
 
 
+#sakila  exercise
+
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+
+#1
+
+mysql> select * from actor;
+
+#2
+ select * where first_name = 'john';
+
+#3
+ select * from actor where last_name = 'Neeson';
+
+#4
+SELECT * FROM actor  WHERE (actor_id % 10) = 0;
+
+#5
+select description from film where film_id = 100;
++-----------------------------------------------------------------------------------------------------------------+
+| description                                                                                                     |
++-----------------------------------------------------------------------------------------------------------------+
+| A Beautiful Drama of a Dentist And a Composer who must Battle a Sumo Wrestler in The First Manned Space Station |
++-----------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+#6
+select title as title, description from film where film_id = 100;
+
+#7
+mysql> select title as 'film title', rating as 'film rating' from film where rating  = 'R' \G;
+*************************** 1. row ***************************
+ film title: AIRPORT POLLOCK
+film rating: R
+*************************** 2. row ***************************
+ film title: ALONE TRIP
+film rating: R
+*************************** 3. row ***************************
+ film title: AMELIE HELLFIGHTERS
+
+#8
+mysql> select title as 'film title', length  as 'film length' from film order by title desc limit 10;
++-------------------+-------------+
+| film title        | film length |
++-------------------+-------------+
+| ZORRO ARK         |          50 |
+| ZOOLANDER FICTION |         101 |
+| ZHIVAGO CORE      |         105 |
+| YOUTH KICK        |         179 |
+| YOUNG LANGUAGE    |         183 |
+| YENTL IDAHO       |          86 |
+| WYOMING STORM     |         100 |
+| WRONG BEHAVIOR    |         178 |
+| WRATH MILE        |         176 |
+| WORST BANGER      |         185 |
++-------------------+-------------+
+10 rows in set (0.01 sec)
+
+
+#9
+mysql> select title from film;
++-----------------------------+
+| title                       |
++-----------------------------+
+| ACADEMY DINOSAUR            |
+| ACE GOLDFINGER              |
+| ADAPTATION HOLES         
+
+#10
+
+mysql> select title as 'film title', special_features  as 'Special Feature' from film where special_features ='Deleted Scenes';
++-------------------------+-----------------+
+| film title              | Special Feature |
++-------------------------+-----------------+
+| AFRICAN EGG             | Deleted Scenes  |
+| AGENT TRUMAN            | Deleted Scenes  |
+| BALLOON HOMEWARD        | Deleted Scenes  |
+| BASIC EASY              | Deleted Scenes  |
+
+#11
+
+SELECT DISTINCT first_name from actor
+
