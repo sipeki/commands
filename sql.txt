@@ -219,3 +219,22 @@ mysql> select * from person;
 
 delete from person where person_id = 2
 
+mysql> select * from person;
++--------+---------+-----+-----------+
+| f_name | l_name  | age | person_id |
++--------+---------+-----+-----------+
+| simon  | kindlen | 120 |         1 |
+| isabel | kindlen |  83 |         3 |
++--------+---------+-----+-----------+
+2 rows in set (0.01 sec)
+mysql> delete from person where person_id = 1
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+mysql> select * from person;
++--------+---------+-----+-----------+
+| f_name | l_name  | age | person_id |
++--------+---------+-----+-----------+
+| isabel | kindlen |  83 |         3 |
++--------+---------+-----+-----------+
+1 row in set (0.01 sec)
+mysql> delete from person;
