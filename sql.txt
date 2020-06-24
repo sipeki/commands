@@ -34,3 +34,123 @@ Empty set (0.01 sec)
 
 mysql> show tables;
 mysql> source world.sql;
+
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databa
+se' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| world              |
++--------------------+
+5 rows in set (0.01 sec)
+mysql> use world;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
++-----------------+
+3 rows in set (0.02 sec)
+mysql> describe city;
+
+ create table person (
+    -> first_name var(100) not null,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'var(100) not null,' at line 2
+mysql> drop table if exists person;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> create table person ( f_name varchar(100) not null,
+    -> l_name varchar(100) not null,
+    -> age int not null,
+    -> unique(f_name, l_name)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables
+    -> ;
++-----------------+
+| Tables_in_world |
++-----------------+
+| city            |
+| country         |
+| countrylanguage |
+| person          |
++-----------------+
+4 rows in set (0.01 sec)
+
+ drop table if exists person
+    -> ;
+Query OK, 0 rows affected (0.03 sec)
+mysql> create table person ( f_name varchar(100) not null, l_name varchar(100) not null, age int not null, unique(f_name, l_name), primary key(f_name) );
+Query OK, 0 rows affected (0.04 sec)
+mysql> describe person
+    -> ;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| f_name | varchar(100) | NO   | PRI | NULL    |       |
+| l_name | varchar(100) | NO   |     | NULL    |       |
+| age    | int(11)      | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+mysql> alter table person add gender varchar(1) not null;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> describe person;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| f_name | varchar(100) | NO   | PRI | NULL    |       |
+| l_name | varchar(100) | NO   |     | NULL    |       |
+| age    | int(11)      | NO   |     | NULL    |       |
+| gender | varchar(1)   | NO   |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+mysql> alter table person add drop column gender;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'drop c
+olumn gender' at line 1
+mysql> alter table person drop column gender;
+alter table person add person_id  int(11) not null;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> describe person;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| f_name    | varchar(100) | NO   | PRI | NULL    |       |
+| l_name    | varchar(100) | NO   |     | NULL    |       |
+| age       | int(11)      | NO   |     | NULL    |       |
+| person_id | int(11)      | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+mysql> alter table person drop primary key;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> alter table person add primary key(person_id);
+Query OK, 0 rows affected (0.04 sec)
+
+
+describe person;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| f_name    | varchar(100) | NO   | MUL | NULL    |       |
+| l_name    | varchar(100) | NO   |     | NULL    |       |
+| age       | int(11)      | NO   |     | NULL    |       |
+| person_id | int(11)      | NO   | PRI | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+mysql> alter table person add person_id  int(11) not null);
