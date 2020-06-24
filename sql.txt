@@ -483,6 +483,18 @@ ount(fa.actor_id) desc limit 1;
 
 
 #14
+mysql> select f.title, s.store_id, i.film_id from film f join inventory i using(film_id) join store s using(store_id) where f.title = 'Academy Dinosaur' and s.st
+ore_id=1;
++------------------+----------+---------+
+| title            | store_id | film_id |
++------------------+----------+---------+
+| ACADEMY DINOSAUR |        1 |       1 |
+| ACADEMY DINOSAUR |        1 |       1 |
+| ACADEMY DINOSAUR |        1 |       1 |
+| ACADEMY DINOSAUR |        1 |       1 |
++------------------+----------+---------+
+4 rows in set (0.01 sec)
+
 
 #15
 select title, release_year from film where film_id = 1;
@@ -503,7 +515,29 @@ select sum(length)/count(title) from film;
 1 row in set (0.02 sec)
 
 #17
+select avg(f.length) as 'average length',  fc.category_id as film_category  from film_category fc join film f on f.film_id=fc.film_id group by film_catego
+ry;
 
++----------------+---------------+
+| average length | film_category |
++----------------+---------------+
+|       111.6094 |             1 |
+|       111.0152 |             2 |
+|       109.8000 |             3 |
+|       111.6667 |             4 |
+|       115.8276 |             5 |
+|       108.7500 |             6 |
+|       120.8387 |             7 |
+|       114.7826 |             8 |
+|       121.6986 |             9 |
+|       127.8361 |            10 |
+|       112.4821 |            11 |
+|       113.6471 |            12 |
+|       111.1270 |            13 |
+|       108.1967 |            14 |
+|       128.2027 |            15 |
+|       113.3158 |            16 |
++----------------+---------------+
 
 #18
 
