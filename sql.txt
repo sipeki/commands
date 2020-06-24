@@ -461,3 +461,64 @@ mysql> select title as 'film title', special_features  as 'Special Feature' from
 
 SELECT DISTINCT first_name from actor
 
+#12
+
+select last_name from actor group by last_name having count(*) > 1;
++-------------+
+| last_name   |
++-------------+
+| AKROYD      |
+| ALLEN       |
+| BAILEY      |
+
+#13
+mysql> select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name from film_actor fa join actor a on fa.actor_id=a.actor_id group by fa.actor_id order by c
+ount(fa.actor_id) desc limit 1;
++----------+--------------------+------------+-----------+
+| actor_id | count(fa.actor_id) | first_name | last_name |
++----------+--------------------+------------+-----------+
+|      107 |                 42 | GINA       | DEGENERES |
++----------+--------------------+------------+-----------+
+1 row in set (0.02 sec)
+
+
+#14
+
+#15
+select title, release_year from film where film_id = 1;
++------------------+--------------+
+| title            | release_year |
++------------------+--------------+
+| ACADEMY DINOSAUR |         2006 |
++------------------+--------------+
+
+#16
+
+select sum(length)/count(title) from film;
++--------------------------+
+| sum(length)/count(title) |
++--------------------------+
+|                 115.2720 |
++--------------------------+
+1 row in set (0.02 sec)
+
+#17
+
+
+#18
+
+#19
+ select title as 'film title', length  as 'film length' from film order by length desc limit 1;
++---------------+-------------+
+| film title    | film length |
++---------------+-------------+
+| CHICAGO NORTH |         185 |
++---------------+-------------+
+1 row in set (0.02 sec)
+
+#20
+
+
+
+
+
