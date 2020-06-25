@@ -10,7 +10,7 @@ select count(*) from city where CountryCode='USA';
 
 #2 Find out what the population and average life expectancy for people in Argentina (ARG) is.
 
-select Name, Population, LifeExpectancy from country where Code='ARG';
+select Name, Population, avg(LifeExpectancy) from country where Code='ARG';
 
 
 #3 Using IS NOT NULL, ORDER BY, LIMIT, what country has the highest life expectancy?
