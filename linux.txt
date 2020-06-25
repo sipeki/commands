@@ -1,0 +1,15 @@
+#Version of OS
+
+uname -a
+
+#version using vraiable
+linux_version = $(uname -a)
+echo $linux_version
+
+#listing files with 4 chracters starting with f
+ls f???
+
+#update apt
+sudo apt update
+ sudo apt upgrade -y
+
