@@ -61,6 +61,7 @@ cat /etc/passwd
 
    29  sudo su # exit back to normal user
 
+#  print working directory
    30  pwd
 # process running
    31  ps
@@ -84,12 +85,30 @@ cat /etc/passwd
    40  wc -l test.txt
    41  wc -w test.txt
 
-#show head of file
+#show head of file first 10 lines
 
    44  head test.txt
 
 # page through file
   56  more test.txt
 
-# show tail of file
+# show tail of file last 10 lines
    57  tail test.txt
+
+# clear terminal
+ctrl+l
+
+#listing files
+
+#long listing
+ls -l
+
+# home directory
+echo $home
+
+#bring up help on a command
+uname --help
+ps --help
+
+#ls comind flags
+ls -la
