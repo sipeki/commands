@@ -483,8 +483,10 @@ ount(fa.actor_id) desc limit 1;
 
 
 #14
-mysql> select f.title, s.store_id, i.film_id from film f join inventory i using(film_id) join store s using(store_id) where f.title = 'Academy Dinosaur' and s.st
-ore_id=1;
+select f.title, s.store_id, i.film_id from film f join inventory i 
+using(film_id) join store s using(store_id) 
+where f.title = 'Academy Dinosaur' and s.store_id=1;
+
 +------------------+----------+---------+
 | title            | store_id | film_id |
 +------------------+----------+---------+
@@ -515,8 +517,9 @@ select sum(length)/count(title) from film;
 1 row in set (0.02 sec)
 
 #17
-select avg(f.length) as 'average length',  fc.category_id as film_category  from film_category fc join film f on f.film_id=fc.film_id group by film_catego
-ry;
+select avg(f.length) as 'average length',  
+fc.category_id as film_category  from film_category fc 
+join film f on f.film_id=fc.film_id group by film_category;
 
 +----------------+---------------+
 | average length | film_category |
@@ -539,7 +542,16 @@ ry;
 |       113.3158 |            16 |
 +----------------+---------------+
 
-#18
+#18 How many movies have Robots in them?
+select count(f.title) from film f where f.description like ('%robot%');
++----------------+
+| count(f.title) |
++----------------+
+|             77 |
++----------------+
+1 row in set (0.01 sec)
+
+
 
 #19
  select title as 'film title', length  as 'film length' from film order by length desc limit 1;
@@ -550,9 +562,15 @@ ry;
 +---------------+-------------+
 1 row in set (0.02 sec)
 
-#20
+#20 Count how many movies were released in 2010.
+select count(f.release_year) from film f where f.release_year=2010;
++-----------------------+
+| count(f.release_year) |
++-----------------------+
+|                     0 |
++-----------------------+
 
 
 
-
+#21 Find the titles of all horror movies.
 
