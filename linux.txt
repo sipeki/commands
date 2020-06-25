@@ -11,5 +11,85 @@ ls f???
 
 #update apt
 sudo apt update
- sudo apt upgrade -y
+sudo apt upgrade -y
 
+# create files
+touch test.txt
+    7  touch test2.txt
+    8  touch test1.txt
+    9  touch a.txt
+   10  touch 6798.txt
+   11  touch 6798.java
+   12  touch 6798.c
+   13  touch 6798.py
+# list all files with extension txt
+   14  ls *.txt
+
+# list all files that start with test
+
+   15  ls test*.txt
+#list all files t*st with * being any character
+   16  ls t*st.txt
+
+# return os
+   17  uname -r
+
+# retun user
+   18  who
+   19  uname -a
+
+# sets variable user with the results for the command 'who' 
+   20  user=$(who)
+
+#prints out hello world
+   21  echo 'hello world!'
+
+# prints out the results from the variable
+   22  echo $user
+
+
+# lists users 
+cat /etc/passwd
+
+   26  ls /etc/*
+   27  ls /etc/* -la
+
+# lists password file
+   28  sudo cat /etc/shadow
+
+# change to super user
+
+   29  sudo su # exit back to normal user
+
+   30  pwd
+# process running
+   31  ps
+
+#list all processes
+   32  top
+
+#freindly list of process with f keys
+   33  htop
+
+# kill a process -9
+   34  kill -9 1021
+
+# grep to search a file 
+  36  cat test.txt | grep serach
+   37  cat test.txt | grep bat
+   38  cat test.txt | grep Serach
+
+# wc word count and flag
+   39  wc test.txt
+   40  wc -l test.txt
+   41  wc -w test.txt
+
+#show head of file
+
+   44  head test.txt
+
+# page through file
+  56  more test.txt
+
+# show tail of file
+   57  tail test.txt
