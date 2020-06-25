@@ -1,0 +1,91 @@
+#1 Using COUNT, get the number of cities in the USA.
+select count(*) from city where CountryCode='USA'; 
+
++----------+
+| count(*) |
++----------+
+|      274 |
++----------+
+
+
+#2 Find out what the population and average life expectancy for people in Argentina (ARG) is.
+
+select Name, Population, LifeExpectancy from country where Code='ARG';
+
+
+#3 Using IS NOT NULL, ORDER BY, LIMIT, what country has the highest life expectancy?
+
+select Name, Population, LifeExpectancy from country where LifeExpectancy is not null  order by LifeExpectancy desc limit 1;
++---------+------------+----------------+
+| Name    | Population | LifeExpectancy |
++---------+------------+----------------+
+| Andorra |      78000 |           83.5 |
++---------+------------+----------------+
+1 row in set (0.01 sec)
+
+#4 Using JOIN … ON, what is the capital of Spain (ESP)?
+
+select city.name, country.name from city join country on city.id=country.capital
+    -> where CountryCode='ESP';
++--------+-------+
+| name   | name  |
++--------+-------+
+| Madrid | Spain |
++--------+-------+
+1 row in set (0.01 sec)
+
+
+
+#5 Using JOIN … ON, list all the languages spoken in the 'Southeast Asia' region.
+#show 
+
+select city.name, country.name from city join country on city.id=country.capital
+    -> where CountryCode='ESP';
++--------+-------+
+| name   | name  |
++--------+-------+
+| Madrid | Spain |
++--------+-------+
+1 row in set (0.01 sec)
+
+#6 Select 25 cities around the world that start with the letter 'F' in a single SQL query.
+
+select *  from city where name like 'f%' limit 25;
++------+---------------------------+-------------+----------------+------------+
+| ID   | Name                      | CountryCode | District       | Population |
++------+---------------------------+-------------+----------------+------------+
+|   54 | Fagatogo                  | ASM         | Tutuila        |       2323 |
+|   88 | Florencio Varela          | ARG         | Buenos Aires   |     315432 |
+|  110 | Formosa                   | ARG         | Formosa        |     147636 |
+|  205 | Francistown               | BWA         | Francistown    |     101805 |
+|  210 | Fortaleza                 | BRA         | Ceará          |    2097757 |
+|  236 | Feira de Santana          | BRA         | Bahia          |     479992 |
+
+
+#7 Using COUNT, get the number of cities in China.
+
+#8 Using IS NOT NULL, ORDER BY, & LIMIT, what country has the lowest population?
+
+#9 Using aggregation, return the number of countries in the database.
+
+#10 What are the top ten largest countries?
+
+#11 List the top five largest cities in Japan.
+
+#12 List the names and country codes of every country which has Elizabeth II as its Head of State.
+
+#13 List the top ten countries which have the smallest population-to-area ratio.
+
+#14 List every unique world language, according to the World database.
+
+#15 What are the top 10 richest countries by GDP?
+
+#16 What are the top 10 largest countries by surface area?
+
+#17 List every country where over 50% of its population can speak French.
+
+#18 Which country has the worst life expectancy?
+
+#19 What is the most common government form?
+
+#20 How many countries have gained independence since records began?

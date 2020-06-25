@@ -397,6 +397,7 @@ SELECT * FROM actor  WHERE (actor_id % 10) = 0;
 
 #5
 select description from film where film_id = 100;
+
 +-----------------------------------------------------------------------------------------------------------------+
 | description                                                                                                     |
 +-----------------------------------------------------------------------------------------------------------------+
@@ -405,10 +406,8 @@ select description from film where film_id = 100;
 1 row in set (0.01 sec)
 
 #6
-select title as title, description from film where film_id = 100;
-
-#7
-mysql> select title as 'film title', rating as 'film rating' from film where rating  = 'R' \G;
+mysql> select title as 'film title', rating as 'film rating' from film
+ where rating  = 'R' \G;
 *************************** 1. row ***************************
  film title: AIRPORT POLLOCK
 film rating: R
@@ -418,8 +417,13 @@ film rating: R
 *************************** 3. row ***************************
  film title: AMELIE HELLFIGHTERS
 
+#7 
+select title as 'film title', rating as 'film rating' from film
+ where rating  != 'R' \G;
+
 #8
-mysql> select title as 'film title', length  as 'film length' from film order by title desc limit 10;
+mysql> select title as 'film title', length  as 'film length' 
+from film order by title desc limit 10;
 +-------------------+-------------+
 | film title        | film length |
 +-------------------+-------------+
@@ -448,7 +452,8 @@ mysql> select title from film;
 
 #10
 
-mysql> select title as 'film title', special_features  as 'Special Feature' from film where special_features ='Deleted Scenes';
+select title as 'film title', special_features  as 'Special Feature' 
+from film where special_features ='Deleted Scenes';
 +-------------------------+-----------------+
 | film title              | Special Feature |
 +-------------------------+-----------------+
@@ -459,8 +464,9 @@ mysql> select title as 'film title', special_features  as 'Special Feature' from
 
 #11
 
-SELECT DISTINCT first_name from actor
+elect last_name,
 
+SELECT DISTINCT first_name from actorsYour organisation doesn't allow you to use work content with this app
 #12
 
 select last_name from actor group by last_name having count(*) > 1;
@@ -487,6 +493,10 @@ select f.title, s.store_id, i.film_id from film f join inventory i
 using(film_id) join store s using(store_id) 
 where f.title = 'Academy Dinosaur' and s.store_id=1;
 
+## alternative
+select * from inventory where film_id=(select film_id from film 
+where title='Academy Dinosaur') and store_id=1;
+
 +------------------+----------+---------+
 | title            | store_id | film_id |
 +------------------+----------+---------+
@@ -499,7 +509,7 @@ where f.title = 'Academy Dinosaur' and s.store_id=1;
 
 
 #15
-select title, release_year from film where film_id = 1;
+
 +------------------+--------------+
 | title            | release_year |
 +------------------+--------------+
@@ -554,7 +564,8 @@ select count(f.title) from film f where f.description like ('%robot%');
 
 
 #19
- select title as 'film title', length  as 'film length' from film order by length desc limit 1;
+ select title as 'film title', length  as 'film length' from film 
+order by length desc limit 1;
 +---------------+-------------+
 | film title    | film length |
 +---------------+-------------+
@@ -573,4 +584,40 @@ select count(f.release_year) from film f where f.release_year=2010;
 
 
 #21 Find the titles of all horror movies.
+select fl.title, fl.category from film_list fl where fl.category in ('Horror');
++-----------------------------+----------+
+| title                       | category |
++-----------------------------+----------+
+| ACE GOLDFINGER              | Horror   |
+| AFFAIR PREJUDICE            | Horror   |
+| AIRPORT POLLOCK             | Horror   |
+| ALABAMA DEVIL               | Horror   |
+| ALI FOREVER                 | Horror   |
+| ANALYZE HOOSIERS            | Horror   |
+| ANYTHING SAVANNAH           | Horror   |
 
+#22 Return the full name of the staff member – in a column named full_name 
+#   – with the ID of 1.
+
+select concat(s.first_name, ' ', s.last_name) as full_name from staff s where staff_id = 1;
++--------------+
+| full_name    |
++--------------+
+| Mike Hillyer |
++--------------+
+1 row in set (0.01 sec)
+
+
+#23 Retrieve all movies that Fred Costner has appeared in.
+
+#25
+
+
+#26
+
+#27
+
+#28
+
+
+#29
