@@ -112,3 +112,79 @@ ps --help
 
 #ls comind flags
 ls -la
+
+# directing text to document
+  echo hello > this.txt
+echo hello add another line >> this.txt 
+
+#delete file
+ rm test1.txt
+
+# create and delete folders
+  mkdir newfolder
+  rmdir newfolder
+
+### VI Editor
+
+# insert
+i 
+
+# escaoe out of command
+esc key
+
+# write and quit
+:wq
+
+# quit without saving
+:q!
+
+
+#write file
+:w
+
+#start of line
+0
+
+#end of line
+$
+
+# open new line
+o
+
+# yank copy
+ww
+
+# paste
+p
+
+
+# Variables and Aliases functions
+
+user=dev
+echo ${user}
+
+echo ${HOME}
+
+echo $path
+
+
+### variable and aliases functions
+
+#variables
+ user = dev
+echo ${user}
+echo ${HOME}
+echo $path
+
+#aliases
+
+longlist="ls -la"
+> longlist
+
+# function
+helloworld() {
+> ls -la
+> pwd
+> echo "hello" $(whoami)
+> }
+
