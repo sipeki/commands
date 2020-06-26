@@ -188,3 +188,58 @@ helloworld() {
 > echo "hello" $(whoami)
 > }
 
+## user and group admin
+tail -n1 /etc/passwd
+  217  tail -n2 /etc/group
+# add user
+  218  sudo adduser sipeki
+  219  tail -n1 /etc/passwd
+# add group
+  220  sudo addgroup groupkin
+  221  tail -n2 /etc/group
+  222  sudo gpasswd groupkin
+
+#add user to a group
+  223  sudo usermod -aG groupkin sipeki
+  224  groups groupkin
+  225  groups sipeki
+
+#login as a user
+  226  su sipeki
+  227  su - sipeki -c "ls -la"
+  228  sudo visudo
+
+### file permissions
+  229  ls
+  230  ls -la
+  231  touch fileperm
+  232  ls -l fileperm
+
+# change user to excute
+  233  chmod u+x fileperm
+  234  ls -l fileperm
+  235  chmod g-rwx fileperm
+  236  ls -l fileperm 
+
+# change user read write excute
+  237  chmod g+rwx fileperm
+  238  ls -l fileperm 
+
+# remove all user read
+  239  chmod a-r
+  240  chmod a-r fileperm 
+  241  ls -l fileperm 
+  242  tpuch numperm
+  243  touch numperm
+
+# r= 4 w=2 x=1 all users r
+  244  chmod 444 numperm 
+  245  ls -l numperm 
+# owner read write
+  246  chmod 644 numperm 
+  247  ls -l numperm
+# owner read write execute read group all read  
+  248  chmod 744 numperm 
+  249  chmod 760 numperm 
+  250  ls -l numperm 
+ 
